@@ -12,9 +12,10 @@ $("button#update").click(function() {
 
     // 各フィールドから値を取得してJSONデータを作成
     var data = {
-        user: $("#user").val(),
+        selector: "selector",
         url: location.href,
-        comment: $("#comment").val()
+        comment: $("#comment").val(),
+        point:[0,0]
     };
     
     // 通信実行

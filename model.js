@@ -5,10 +5,11 @@ var db = mongoose.connect('mongodb://localhost/firstapp');
 
 function validator(v) {
 	return v.length > 0;
-}1
+}
 
 var Post = new mongoose.Schema({
-	user   : { type: String, validate: [validator, "Empty Error"] },
+	selector   : { type: String, validate: [validator, "Empty Error"] },
+  point : { type: Array, validate: [validator, "Empty Error"] },
 	url   : { type: String, validate: [validator, "Empty Error"] },
 	comment   : { type: String, validate: [validator, "Empty Error"] },
 	created: { type: Date, default: Date.now }

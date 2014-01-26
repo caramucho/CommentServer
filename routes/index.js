@@ -1,13 +1,14 @@
 var model = require('../model');
 var Post = model.Post;
-var items = [
-{ "text": "1st Post." }
-, { "text": "2nd Post." }
-];
 
 exports.index = function(req, res){
   Post.find({}, function(err, items){
-    res.render('index', { title: 'Entry List', items: items })
+    res.render('index', { title: 'Entry List', items: items});
+    for (var i=0, size=items.length; i<size; ++i) {
+      console.log("user="+items[i].user);
+      console.log("url="+items[i].url);
+      console.log("comment="+items[i].comment);
+    }
   });
 };
 
@@ -23,7 +24,23 @@ exports.create = function(req, res){
       res.redirect('back');
     } 
     else {
-      res.redirect('/');
+      res.json( "success");
+      // res.redirect('/');
+      
     }
   });
+
 };
+
+exports.getComment = function(req, res){
+ Post.find({}, function(err, items){
+    if (err) {
+      console.log(err);
+      res.redirect('back');
+    } 
+    else {
+      res.json(items);
+      // res.redirect('/');
+    }
+  });
+}

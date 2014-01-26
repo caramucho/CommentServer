@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -22,17 +21,25 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res, next) {
+	res.locals.user = {
+		name: "test"
+	};
+	next();
+})
+
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/form', routes.form);
+app.get('/getComment',routes.getComment)
 app.post('/create', routes.create);
 
-app.listen(3000, function(){
-    console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+http.createServer(app).listen(app.get('port'), function() {
+	console.log('Express server listening on port ' + app.get('port'));
 });

@@ -2,12 +2,13 @@ var model = require('../model');
 var Post = model.Post;
 
 exports.index = function(req, res){
-  Post.find({}, function(err, items){
+  Post.find({url:"http://www.baidu.com/"}, function(err, items){
     res.render('index', { title: 'Entry List', items: items});
     for (var i=0, size=items.length; i<size; ++i) {
-      console.log("point="+items[i].point[0]);
+      console.log("point="+items[i].point[0]+items[i].point[1]);
       console.log("url="+items[i].url);
-      console.log("comment="+items[i].comment);
+      console.log("comment="+items[i].content);
+      console.log("selector="+items[i].selector);
     }
   });
 };

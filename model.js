@@ -11,7 +11,7 @@ var Post = new mongoose.Schema({
 	selector   : { type: String, validate: [validator, "Empty Error"] },
   point : { type: Array, validate: [validator, "Empty Error"] },
 	url   : { type: String, validate: [validator, "Empty Error"] },
-	comment   : { type: String, validate: [validator, "Empty Error"] },
+	content   : { type: String, validate: [validator, "Empty Error"] },
 	created: { type: Date, default: Date.now }
 });
 

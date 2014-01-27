@@ -14,7 +14,7 @@ $("button#update").click(function() {
     var data = {
         selector: "selector",
         url: location.href,
-        comment: $("#comment").val(),
+        content: $("#comment").val(),
         point:[0,0]
     };
     

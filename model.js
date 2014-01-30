@@ -8,11 +8,11 @@ function validator(v) {
 }
 
 var Post = new mongoose.Schema({
-	selector   : { type: String, validate: [validator, "Empty Error"] },
-  point : { type: Array, validate: [validator, "Empty Error"] },
-	url   : { type: String, validate: [validator, "Empty Error"] },
-	content   : { type: String, validate: [validator, "Empty Error"] },
-	created: { type: Date, default: Date.now }
+    selector:   { type: String, validate: [validator, "Empty Error"] },
+    point:      { type: Array, validate: [validator, "Empty Error"] },
+    url:        { type: String, validate: [validator, "Empty Error"] },
+    content:    { type: String, validate: [validator, "Empty Error"] },
+    created:    { type: Date, default: Date.now }
 });
 
 exports.Post = db.model('Post', Post);

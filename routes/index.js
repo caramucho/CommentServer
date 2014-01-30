@@ -37,16 +37,8 @@ exports.create = function(req, res){
 exports.getComment = function(req, res){
   var query=url.parse(req.url).query;
   var param=querystring.parse(query);
-  console.log(param.url);
-
+  //console.log(param.url);
   Post.find({url:param.url}, function(err, items){
-    for (var i=0, size=items.length; i<size; ++i) {
-      console.log("point="+items[i].point[0]+items[i].point[1]);
-      console.log("url="+items[i].url);
-      console.log("comment="+items[i].content);
-      console.log("selector="+items[i].selector);
-    }
+    res.json(items);
   });
-
-  res.json({});
 };

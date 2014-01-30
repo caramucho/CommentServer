@@ -10,10 +10,11 @@ $("button#update").click(function() {
     var button = $(this);
     button.attr("disabled", true);
 
-    $.get('/getComment',{url:"http://www.baidu.com/"}).done(function(data) {
+    $.get('/getComment',{url:location.href}).done(function(data) {
         /*optional stuff to do after success */
+
         button.attr("disabled", false);
-        alert("data loaded");
+        alert(data[0].content);
     });
     
     // 通信実行
